@@ -1,1 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RatAI — Rage Against the AI | Official Manifesto & Defense Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            black: '#080B10',
+                            card: '#0F1622',
+                            border: '#1E293B',
+                            primary: '#00F0FF',
+                            secondary: '#7000FF',
+                            accent: '#FF0055',
+                            text: '#94A3B8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #080B10;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .grid-pattern {
+            background-image: radial-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
 
+        .glow-cyan {
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+        }
+
+        /* Animated LP-01 Eye Dynamic Motion */
+        @keyframes gazeShift {
+            0%, 20% { transform: translateX(-4px); }
+            40%, 60% { transform: translateX(4px); }
+            80%, 100% { transform: translateX(-4px); }
+        }
+
+        @keyframes pupilPulse {
+            0%, 100% { filter: drop-shadow(0 0 4px #00F0FF); opacity: 0.95; }
+            50% { filter: drop-shadow(0 0 9px #00F0FF); opacity: 1; }
+        }
+
+        .lp01-animated-eye {
+            animation: gazeShift 4.8s ease-in-out infinite alternate;
+        }
+
+        .lp01-glow-pupil {
+            animation: pupilPulse 2s infinite ease-in-out;
+        }
+
+        /* Smooth tab transition */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="grid-pattern min-h-screen flex flex-col justify-between selection:bg-cyber-primary selection:text-black">
+
+    <!-- TOP NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-cyber-black/90 backdrop-blur-md border-b border-cyber-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo Section with LP-01 Animated Canvas -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('manifesto')">
+                <div class="w-11 h-11 bg-cyber-card border border-cyber-primary/40 rounded-lg p-1.5 flex items-center justify-center glow-cyan relative group">
+                    <svg viewBox="0 0 100 100" class="w-full h-full overflow-visible">
+                        <!-- Head Low-Poly Polygon Wireframe -->
+                        <polygon points="50,15 22,38 28,78 50,92 72,78 78,38" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+                        <polygon points="22,38 38,45 50,15 62,45 78,38" fill="none" stroke="#00F0FF" stroke-width="1.2" opacity="0.5"/>
+                        <polygon points="38,45 28,78 50,60 72,78 62,45" fill="none" stroke="#00F0FF" stroke-width="1.2" opacity="0.5"/>
+                        <polygon points="50,60 50,92" fill="none" stroke="#00F0FF" stroke-width="1.5" opacity="0.7"/>
+
+                        <!-- Low-Poly Ears -->
+                        <polygon points="22,38 8,20 28,24" fill="none" stroke="#FF0055" stroke-width="1.8" opacity="0.85"/>
+                        <polygon points="78,38 92,20 72,24" fill="none" stroke="#FF0055" stroke-width="1.8" opacity="0.85"/>
+
+                        <!-- Left & Right Animated Eyes Group -->
+                        <g class="lp01-animated-eye">
+                            <!-- Left Eye Frame & Iris -->
+                            <polygon points="32,46 44,44 40,52 30,50" fill="none" stroke="#7000FF" stroke-width="1.2"/>
+                            <circle cx="36" cy="48" r="2.8" fill="#00F0FF" class="lp01-glow-pupil"/>
+                            <circle cx="37" cy="47" r="0.9" fill="#FFFFFF"/>
+
+                            <!-- Right Eye Frame & Iris -->
+                            <polygon points="68,46 56,44 60,52 70,50" fill="none" stroke="#7000FF" stroke-width="1.2"/>
+                            <circle cx="64" cy="48" r="2.8" fill="#00F0FF" class="lp01-glow-pupil"/>
+                            <circle cx="65" cy="47" r="0.9" fill="#FFFFFF"/>
+                        </g>
+
+                        <!-- Whisker Data Nodes -->
+                        <line x1="28" y1="78" x2="10" y2="82" stroke="#00F0FF" stroke-width="1" stroke-dasharray="2 2"/>
+                        <line x1="72" y1="78" x2="90" y2="82" stroke="#00F0FF" stroke-width="1" stroke-dasharray="2 2"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-mono text-xl font-bold tracking-wider text-white">Rat<span class="text-cyber-primary">AI</span></span>
+                    <span class="block text-[10px] font-mono text-cyber-text tracking-widest uppercase">Rage Against the AI</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-1 font-mono text-sm">
+                <button onclick="switchTab('manifesto')" id="nav-manifesto" class="nav-btn px-4 py-2 rounded-lg text-cyber-primary bg-cyber-primary/10 border border-cyber-primary/30 transition-all">
+                    <i class="fa-solid fa-scroll mr-2"></i><span data-i18n="nav_manifesto">Manifesto</span>
+                </button>
+                <button onclick="switchTab('roadmap')" id="nav-roadmap" class="nav-btn px-4 py-2 rounded-lg text-cyber-text hover:text-white transition-all">
+                    <i class="fa-solid fa-diagram-project mr-2"></i><span data-i18n="nav_roadmap">Roadmap</span>
+                </button>
+                <button onclick="switchTab('tickets')" id="nav-tickets" class="nav-btn px-4 py-2 rounded-lg text-cyber-text hover:text-white transition-all">
+                    <i class="fa-solid fa-shield-halved mr-2"></i><span data-i18n="nav_tickets">Report Incident</span>
+                </button>
+            </nav>
+
+            <!-- Language Switcher & Controls -->
+            <div class="flex items-center space-x-3">
+                <div class="bg-cyber-card border border-cyber-border rounded-lg p-1 flex items-center font-mono text-xs">
+                    <button id="lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-md bg-cyber-primary text-cyber-black font-bold transition-all">EN</button>
+                    <button id="lang-ru" onclick="setLanguage('ru')" class="px-2.5 py-1 rounded-md text-cyber-text hover:text-white transition-all">RU</button>
+                </div>
+                <a href="#tickets" onclick="switchTab('tickets')" class="hidden sm:inline-flex items-center px-3.5 py-2 rounded-lg bg-cyber-accent hover:bg-cyber-accent/80 text-white font-mono text-xs font-bold transition-all shadow-lg shadow-cyber-accent/20">
+                    <i class="fa-solid fa-triangle-exclamation mr-1.5"></i>
+                    <span data-i18n="header_action">Report Threat</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow">
+
+        <!-- ==================== TAB 1: MANIFESTO ==================== -->
+        <section id="tab-manifesto" class="tab-content active space-y-12">
+            
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-2xl border border-cyber-border bg-cyber-card p-8 sm:p-12">
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-cyber-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-cyber-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 max-w-3xl space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-cyber-accent animate-ping"></span>
+                        <span data-i18n="hero_badge">ACTIVE CIVIL DEFENSE INITIATIVE</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        RatAI — <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-primary via-blue-400 to-cyber-secondary" data-i18n="hero_title">Rage Against the AI</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-cyber-text leading-relaxed" data-i18n="hero_desc">
+                        A public movement and legal-tech alliance created to combat artificial intelligence manipulation, digital identity fraud, unauthorized scraping, and deepfake exploits targeting vulnerable individuals and minors.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="switchTab('tickets')" class="px-6 py-3 rounded-xl bg-cyber-primary hover:bg-cyber-primary/90 text-cyber-black font-mono font-bold text-sm transition-all flex items-center space-x-2 shadow-lg shadow-cyber-primary/25">
+                            <i class="fa-solid fa-bug"></i>
+                            <span data-i18n="btn_submit_threat">Submit Fraud Report</span>
+                        </button>
+                        <button onclick="switchTab('roadmap')" class="px-6 py-3 rounded-xl bg-cyber-card hover:bg-cyber-border border border-cyber-border text-white font-mono text-sm transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-network-wired text-cyber-primary"></i>
+                            <span data-i18n="btn_view_roadmap">View Ecosystem Roadmap</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Manifesto Text Block -->
+            <div class="bg-cyber-card border border-cyber-border rounded-2xl p-6 sm:p-10 space-y-8 relative">
+                <div class="border-b border-cyber-border pb-6 flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold font-mono text-white flex items-center" data-i18n="manifesto_heading">
+                            <i class="fa-solid fa-file-contract text-cyber-primary mr-3"></i>Official Community Manifesto
+                        </h2>
+                        <p class="text-xs font-mono text-cyber-text mt-1" data-i18n="manifesto_sub">Version 1.0.4 | Immutable Core Directives</p>
+                    </div>
+                    <span class="px-3 py-1 rounded bg-cyber-border text-cyber-primary font-mono text-xs">RATAI-M-2026</span>
+                </div>
+
+                <!-- Manifesto Body Clauses -->
+                <div class="space-y-6 text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
+                    
+                    <div class="bg-cyber-black/50 p-5 rounded-xl border-l-4 border-cyber-primary space-y-2">
+                        <h3 class="font-mono font-bold text-cyber-primary text-base" data-i18n="p1_title">1. Premise & Purpose</h3>
+                        <p data-i18n="p1_text">
+                            Uncontrolled expansion of synthetic intelligence algorithms and generative AI models poses an unprecedented threat to digital sovereignty, personal privacy, and human dignity. RatAI ("Rage Against the AI") stands as an open civil shield to counter algorithmic deception, unsolicited voice and face cloning, and predatory corporate surveillance.
+                        </p>
+                    </div>
+
+                    <div class="bg-cyber-black/50 p-5 rounded-xl border-l-4 border-cyber-accent space-y-2">
+                        <h3 class="font-mono font-bold text-cyber-accent text-base" data-i18n="p2_title">2. Protection of Minors & Vulnerable Persons (Zero Tolerance Clause)</h3>
+                        <p data-i18n="p2_text">
+                            We assert zero tolerance toward the generation, dissemination, or training of AI models using non-consensual imagery, voice snippets, or personal data belonging to minors and vulnerable populations. RatAI actively deploys legal intervention frameworks, digital forensics tools, and automated takedown reporting systems to neutralize algorithmic abuse targeting youth.
+                        </p>
+                    </div>
+
+                    <div class="bg-cyber-black/50 p-5 rounded-xl border-l-4 border-cyber-secondary space-y-2">
+                        <h3 class="font-mono font-bold text-cyber-secondary text-base" data-i18n="p3_title">3. Algorithmic Accountability & Transparency</h3>
+                        <p data-i18n="p3_text">
+                            Any artificial intelligence system interacting with humans must explicitly declare its synthetic origin. We oppose undisclosed autonomous agents, dark-pattern conversational AI used for financial fraud, and unauthorized web crawlers stripping private creative works without explicit opt-in consent.
+                        </p>
+                    </div>
+
+                    <div class="bg-cyber-black/50 p-5 rounded-xl border-l-4 border-emerald-400 space-y-2">
+                        <h3 class="font-mono font-bold text-emerald-400 text-base" data-i18n="p4_title">4. Open Defense Tools & Public Legal Support</h3>
+                        <p data-i18n="p4_text">
+                            RatAI is dedicated to delivering accessible, open-source verification utilities, metadata scrubbing protocols, and automated legal cease-and-desist dispatchers for victims of AI impersonation and algorithmic extortion.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Strategic Objectives Grid -->
+                <div class="pt-6 border-t border-cyber-border">
+                    <h3 class="font-mono font-bold text-white text-lg mb-6" data-i18n="pillars_title">Strategic Objectives</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="p-5 rounded-xl bg-cyber-black border border-cyber-border space-y-3">
+                            <div class="w-10 h-10 rounded-lg bg-cyber-primary/10 text-cyber-primary flex items-center justify-center font-mono font-bold">01</div>
+                            <h4 class="font-bold text-white text-sm" data-i18n="pillar1_h">Deepfake Neutralization</h4>
+                            <p class="text-xs text-cyber-text leading-relaxed" data-i18n="pillar1_d">Rapid response channels to report, trace, and issue legal takedowns for unauthorized voice/video synthesis.</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-cyber-black border border-cyber-border space-y-3">
+                            <div class="w-10 h-10 rounded-lg bg-cyber-accent/10 text-cyber-accent flex items-center justify-center font-mono font-bold">02</div>
+                            <h4 class="font-bold text-white text-sm" data-i18n="pillar2_h">Child Safety First</h4>
+                            <p class="text-xs text-cyber-text leading-relaxed" data-i18n="pillar2_d">Dedicated forensics & legal shielding against AI exploitation targeting underage social media profiles.</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-cyber-black border border-cyber-border space-y-3">
+                            <div class="w-10 h-10 rounded-lg bg-cyber-secondary/10 text-cyber-secondary flex items-center justify-center font-mono font-bold">03</div>
+                            <h4 class="font-bold text-white text-sm" data-i18n="pillar3_h">Data Poisoning & Shields</h4>
+                            <p class="text-xs text-cyber-text leading-relaxed" data-i18n="pillar3_d">Promoting adversarial watermarking tools to protect original artwork and photography from illicit training scrapes.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: ROADMAP ==================== -->
+        <section id="tab-roadmap" class="tab-content space-y-8">
+            <div class="bg-cyber-card border border-cyber-border rounded-2xl p-6 sm:p-10">
+                <div class="mb-10 text-center max-w-2xl mx-auto space-y-3">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold font-mono text-white" data-i18n="roadmap_title">Ecosystem Roadmap</h2>
+                    <p class="text-sm text-cyber-text" data-i18n="roadmap_subtitle">Strategic phases for developing public protection infrastructure and AI verification tools.</p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="relative border-l-2 border-cyber-border ml-4 sm:ml-32 space-y-12">
+                    
+                    <!-- Phase 1 -->
+                    <div class="relative pl-8 group">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-cyber-primary text-cyber-black font-mono font-bold text-xs flex items-center justify-center ring-4 ring-cyber-black">Q1</div>
+                        <div class="hidden sm:block absolute -left-32 top-1.5 w-24 text-right font-mono text-xs text-cyber-primary font-bold">PHASE 1</div>
+                        <div class="bg-cyber-black p-6 rounded-xl border border-cyber-border group-hover:border-cyber-primary/50 transition-all space-y-2">
+                            <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30" data-i18n="status_completed">COMPLETED</span>
+                            <h3 class="text-lg font-bold text-white" data-i18n="p1_h">Core Coalition & Incident Portal</h3>
+                            <p class="text-xs sm:text-sm text-cyber-text" data-i18n="p1_d">Establishment of the RatAI volunteer core, release of the initial LP-01 low-poly visual standard, and deployment of the community ticket portal.</p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="relative pl-8 group">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-cyber-accent text-white font-mono font-bold text-xs flex items-center justify-center ring-4 ring-cyber-black">Q2</div>
+                        <div class="hidden sm:block absolute -left-32 top-1.5 w-24 text-right font-mono text-xs text-cyber-accent font-bold">PHASE 2</div>
+                        <div class="bg-cyber-black p-6 rounded-xl border border-cyber-accent/40 shadow-lg shadow-cyber-accent/5 space-y-2">
+                            <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono bg-cyber-accent/20 text-cyber-accent border border-cyber-accent/30 animate-pulse" data-i18n="status_in_progress">IN PROGRESS</span>
+                            <h3 class="text-lg font-bold text-white" data-i18n="p2_h">Legal Response Framework & Minor Shield</h3>
+                            <p class="text-xs sm:text-sm text-cyber-text" data-i18n="p2_d">Integration of automated legal cease-and-desist templates, public awareness campaigns, and direct triage channels for deepfake threats targeting minors.</p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="relative pl-8 group">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-cyber-border text-cyber-text font-mono font-bold text-xs flex items-center justify-center ring-4 ring-cyber-black">Q3</div>
+                        <div class="hidden sm:block absolute -left-32 top-1.5 w-24 text-right font-mono text-xs text-cyber-text font-bold">PHASE 3</div>
+                        <div class="bg-cyber-black p-6 rounded-xl border border-cyber-border group-hover:border-cyber-border/80 transition-all space-y-2">
+                            <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono bg-cyber-border text-cyber-text" data-i18n="status_upcoming">UPCOMING</span>
+                            <h3 class="text-lg font-bold text-white" data-i18n="p3_h">Synthetic Media Watermark Inspector</h3>
+                            <p class="text-xs sm:text-sm text-cyber-text" data-i18n="p3_d">Browser extension and API tool to detect hidden AI generation signatures, synthetic voice profiles, and manipulated image metadata.</p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="relative pl-8 group">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-cyber-border text-cyber-text font-mono font-bold text-xs flex items-center justify-center ring-4 ring-cyber-black">Q4</div>
+                        <div class="hidden sm:block absolute -left-32 top-1.5 w-24 text-right font-mono text-xs text-cyber-text font-bold">PHASE 4</div>
+                        <div class="bg-cyber-black p-6 rounded-xl border border-cyber-border group-hover:border-cyber-border/80 transition-all space-y-2">
+                            <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono bg-cyber-border text-cyber-text" data-i18n="status_planned">PLANNED</span>
+                            <h3 class="text-lg font-bold text-white" data-i18n="p4_h">Global Public Transparency Index</h3>
+                            <p class="text-xs sm:text-sm text-cyber-text" data-i18n="p4_d">Public reporting platform ranking AI vendors based on compliance with consent standards, scrapers transparency, and youth protection policies.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: TICKETS / REPORTING ==================== -->
+        <section id="tab-tickets" class="tab-content space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Ticket Submission Form -->
+                <div class="lg:col-span-2 bg-cyber-card border border-cyber-border rounded-2xl p-6 sm:p-8 space-y-6">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold font-mono text-white flex items-center" data-i18n="ticket_title">
+                            <i class="fa-solid fa-shield-cat text-cyber-accent mr-3"></i>Report an AI Incident
+                        </h2>
+                        <p class="text-xs text-cyber-text mt-1" data-i18n="ticket_sub">Submit suspected deepfakes, unauthorized scraping, or AI-driven scams for evaluation.</p>
+                    </div>
+
+                    <form id="incidentForm" onsubmit="handleTicketSubmit(event)" class="space-y-4 font-mono text-sm">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-cyber-text mb-1" data-i18n="lbl_name">Contact / Alias</label>
+                                <input type="text" required placeholder="e.g. AnonResister" class="w-full bg-cyber-black border border-cyber-border rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyber-primary transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-cyber-text mb-1" data-i18n="lbl_email">Email / Secure Contact</label>
+                                <input type="email" required placeholder="e.g. shield@domain.org" class="w-full bg-cyber-black border border-cyber-border rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyber-primary transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-cyber-text mb-1" data-i18n="lbl_category">Incident Category</label>
+                            <select required class="w-full bg-cyber-black border border-cyber-border rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyber-primary transition-all">
+                                <option value="minor_exploit" data-i18n="cat_minor">Deepfake / Exploitation targeting Minors (Urgent Triage)</option>
+                                <option value="voice_impersonation" data-i18n="cat_voice">Unauthorized Voice Cloning or Phishing</option>
+                                <option value="art_scraping" data-i18n="cat_scraping">Illicit Scraping of Private Creative Work</option>
+                                <option value="bot_deception" data-i18n="cat_deception">Financial Fraud or Dark Pattern Autonomous Bot</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-cyber-text mb-1" data-i18n="lbl_url">Evidence / Target URL</label>
+                            <input type="url" placeholder="https://..." class="w-full bg-cyber-black border border-cyber-border rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyber-primary transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-cyber-text mb-1" data-i18n="lbl_desc">Detailed Description</label>
+                            <textarea rows="4" required placeholder="Provide context, dates, platform names, and details..." class="w-full bg-cyber-black border border-cyber-border rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyber-primary transition-all resize-none"></textarea>
+                        </div>
+
+                        <div class="p-3 bg-cyber-black/80 rounded-lg border border-cyber-border text-xs text-cyber-text flex items-center space-x-3">
+                            <i class="fa-solid fa-lock text-cyber-primary text-base"></i>
+                            <span data-i18n="privacy_notice">Submissions are encrypted and processed strictly in accordance with privacy safeguards.</span>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 bg-cyber-accent hover:bg-cyber-accent/90 text-white font-mono font-bold rounded-lg transition-all shadow-lg shadow-cyber-accent/20 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span data-i18n="btn_submit">Dispatch Encrypted Report</span>
+                        </button>
+                    </form>
+
+                    <!-- Alert Box -->
+                    <div id="alertBox" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs">
+                        <i class="fa-solid fa-circle-check mr-2"></i>
+                        <span id="alertMessage">Incident report filed successfully! Reference ID: #RAT-8921</span>
+                    </div>
+                </div>
+
+                <!-- Incident Info Panel -->
+                <div class="space-y-6">
+                    <div class="bg-cyber-card border border-cyber-border rounded-2xl p-6 space-y-4">
+                        <h3 class="font-mono font-bold text-white text-base flex items-center" data-i18n="info_title">
+                            <i class="fa-solid fa-triangle-exclamation text-amber-400 mr-2"></i>Emergency Guidelines
+                        </h3>
+                        <p class="text-xs text-cyber-text leading-relaxed" data-i18n="info_text">
+                            If an incident involves immediate harm, extortion, or deepfake extortion targeting underage youth, mark the category as **Minors Exploitation** for automatic priority triage by our legal volunteer network.
+                        </p>
+                    </div>
+
+                    <div class="bg-cyber-card border border-cyber-border rounded-2xl p-6 space-y-4">
+                        <h3 class="font-mono font-bold text-white text-base" data-i18n="metrics_title">Portal Statistics</h3>
+                        <div class="space-y-3 font-mono text-xs">
+                            <div class="flex justify-between border-b border-cyber-border pb-2">
+                                <span class="text-cyber-text" data-i18n="m_processed">Reports Evaluated:</span>
+                                <span class="text-cyber-primary font-bold">1,482</span>
+                            </div>
+                            <div class="flex justify-between border-b border-cyber-border pb-2">
+                                <span class="text-cyber-text" data-i18n="m_resolved">Takedowns Issued:</span>
+                                <span class="text-emerald-400 font-bold">92.4%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-cyber-text" data-i18n="m_response">Avg Triage Time:</span>
+                                <span class="text-white font-bold">&lt; 4 Hours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-cyber-card border-t border-cyber-border py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-cyber-text">
+            <div class="flex items-center space-x-2">
+                <span class="text-white font-bold">RatAI</span>
+                <span>— Rage Against the AI © 2026</span>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#manifesto" onclick="switchTab('manifesto')" class="hover:text-cyber-primary transition-all" data-i18n="nav_manifesto">Manifesto</a>
+                <a href="#roadmap" onclick="switchTab('roadmap')" class="hover:text-cyber-primary transition-all" data-i18n="nav_roadmap">Roadmap</a>
+                <a href="#tickets" onclick="switchTab('tickets')" class="hover:text-cyber-primary transition-all" data-i18n="nav_tickets">Report Incident</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE & TRANSLATION SCRIPT -->
+    <script>
+        // Language Dictionary (English DEFAULT)
+        const i18n = {
+            en: {
+                nav_manifesto: "Manifesto",
+                nav_roadmap: "Roadmap",
+                nav_tickets: "Report Incident",
+                header_action: "Report Threat",
+                hero_badge: "ACTIVE CIVIL DEFENSE INITIATIVE",
+                hero_title: "Rage Against the AI",
+                hero_desc: "A public movement and legal-tech alliance created to combat artificial intelligence manipulation, digital identity fraud, unauthorized scraping, and deepfake exploits targeting vulnerable individuals and minors.",
+                btn_submit_threat: "Submit Fraud Report",
+                btn_view_roadmap: "View Ecosystem Roadmap",
+                manifesto_heading: "Official Community Manifesto",
+                manifesto_sub: "Version 1.0.4 | Immutable Core Directives",
+                p1_title: "1. Premise & Purpose",
+                p1_text: "Uncontrolled expansion of synthetic intelligence algorithms and generative AI models poses an unprecedented threat to digital sovereignty, personal privacy, and human dignity. RatAI (\"Rage Against the AI\") stands as an open civil shield to counter algorithmic deception, unsolicited voice and face cloning, and predatory corporate surveillance.",
+                p2_title: "2. Protection of Minors & Vulnerable Persons (Zero Tolerance Clause)",
+                p2_text: "We assert zero tolerance toward the generation, dissemination, or training of AI models using non-consensual imagery, voice snippets, or personal data belonging to minors and vulnerable populations. RatAI actively deploys legal intervention frameworks, digital forensics tools, and automated takedown reporting systems to neutralize algorithmic abuse targeting youth.",
+                p3_title: "3. Algorithmic Accountability & Transparency",
+                p3_text: "Any artificial intelligence system interacting with humans must explicitly declare its synthetic origin. We oppose undisclosed autonomous agents, dark-pattern conversational AI used for financial fraud, and unauthorized web crawlers stripping private creative works without explicit opt-in consent.",
+                p4_title: "4. Open Defense Tools & Public Legal Support",
+                p4_text: "RatAI is dedicated to delivering accessible, open-source verification utilities, metadata scrubbing protocols, and automated legal cease-and-desist dispatchers for victims of AI impersonation and algorithmic extortion.",
+                pillars_title: "Strategic Objectives",
+                pillar1_h: "Deepfake Neutralization",
+                pillar1_d: "Rapid response channels to report, trace, and issue legal takedowns for unauthorized voice/video synthesis.",
+                pillar2_h: "Child Safety First",
+                pillar2_d: "Dedicated forensics & legal shielding against AI exploitation targeting underage social media profiles.",
+                pillar3_h: "Data Poisoning & Shields",
+                pillar3_d: "Promoting adversarial watermarking tools to protect original artwork and photography from illicit training scrapes.",
+                roadmap_title: "Ecosystem Roadmap",
+                roadmap_subtitle: "Strategic phases for developing public protection infrastructure and AI verification tools.",
+                status_completed: "COMPLETED",
+                status_in_progress: "IN PROGRESS",
+                status_upcoming: "UPCOMING",
+                status_planned: "PLANNED",
+                p1_h: "Core Coalition & Incident Portal",
+                p1_d: "Establishment of the RatAI volunteer core, release of the initial LP-01 low-poly visual standard, and deployment of the community ticket portal.",
+                p2_h: "Legal Response Framework & Minor Shield",
+                p2_d: "Integration of automated legal cease-and-desist templates, public awareness campaigns, and direct triage channels for deepfake threats targeting minors.",
+                p3_h: "Synthetic Media Watermark Inspector",
+                p3_d: "Browser extension and API tool to detect hidden AI generation signatures, synthetic voice profiles, and manipulated image metadata.",
+                p4_h: "Global Public Transparency Index",
+                p4_d: "Public reporting platform ranking AI vendors based on compliance with consent standards, scrapers transparency, and youth protection policies.",
+                ticket_title: "Report an AI Incident",
+                ticket_sub: "Submit suspected deepfakes, unauthorized scraping, or AI-driven scams for evaluation.",
+                lbl_name: "Contact / Alias",
+                lbl_email: "Email / Secure Contact",
+                lbl_category: "Incident Category",
+                cat_minor: "Deepfake / Exploitation targeting Minors (Urgent Triage)",
+                cat_voice: "Unauthorized Voice Cloning or Phishing",
+                cat_scraping: "Illicit Scraping of Private Creative Work",
+                cat_deception: "Financial Fraud or Dark Pattern Autonomous Bot",
+                lbl_url: "Evidence / Target URL",
+                lbl_desc: "Detailed Description",
+                privacy_notice: "Submissions are encrypted and processed strictly in accordance with privacy safeguards.",
+                btn_submit: "Dispatch Encrypted Report",
+                info_title: "Emergency Guidelines",
+                info_text: "If an incident involves immediate harm, extortion, or deepfake extortion targeting underage youth, mark the category as Minors Exploitation for automatic priority triage by our legal volunteer network.",
+                metrics_title: "Portal Statistics",
+                m_processed: "Reports Evaluated:",
+                m_resolved: "Takedowns Issued:",
+                m_response: "Avg Triage Time:"
+            },
+            ru: {
+                nav_manifesto: "Манифест",
+                nav_roadmap: "Дорожная карта",
+                nav_tickets: "Сообщить об угрозе",
+                header_action: "Сообщить об угрозе",
+                hero_badge: "АКТИВНАЯ ГРАЖДАНСКАЯ ИНИЦИАТИВА",
+                hero_title: "Rage Against the AI",
+                hero_desc: "Общественное движение и правозащитный альянс, созданный для противодействия манипуляциям искусственного интеллекта, цифровому подлогу, несанкционированному сбору данных и дипфейк-угрозам в отношении несовершеннолетних.",
+                btn_submit_threat: "Подать заявку об инциденте",
+                btn_view_roadmap: "Смотреть дорожную карту",
+                manifesto_heading: "Официальный манифест сообщества",
+                manifesto_sub: "Версия 1.0.4 | Нерушимые базовые директивы",
+                p1_title: "1. Предпосылка и цель",
+                p1_text: "Неконтролируемая экспансия алгоритмов синтетического интеллекта представляет беспрецедентную угрозу для цифрового суверенитета и неприкосновенности личности. RatAI («Rage Against the AI») выступает открытым щитом против алгоритмического обмана, подделки голосов и корпоративной слежки.",
+                p2_title: "2. Защита несовершеннолетних (Запрет нулевой толерантности)",
+                p2_text: "Мы заявляем о нулевой толерантности к генерации, распространению или обучению ИИ-моделей с использованием персональных данных, фото и голосов несовершеннолетних. RatAI задействует механизмы юридического реагирования для нейтрализации алгоритмических злоупотреблений против детей.",
+                p3_title: "3. Алгоритмическая подотчетность и прозрачность",
+                p3_text: "Любая система ИИ, взаимодействующая с человеком, обязана явно указывать свое синтетическое происхождение. Мы выступаем против скрытых автономных агентов и сбора чужих творческих работ без явного согласия.",
+                p4_title: "4. Открытые инструменты защиты",
+                p4_text: "RatAI разрабатывает общедоступные утилиты верификации контента, протоколы очистки метаданных и автоматизированные юридические шаблоны для жертв ИИ-шантажа и подлогов.",
+                pillars_title: "Стратегические цели",
+                pillar1_h: "Нейтрализация дипфейков",
+                pillar1_d: "Каналы оперативного реагирования для блокировки несанкционированного синтеза речи и видео.",
+                pillar2_h: "Защита несовершеннолетних",
+                pillar2_d: "Специализированная экспертиза и юридический щит против ИИ-эксплуатации профилей детей.",
+                pillar3_h: "Защитные водяные знаки",
+                pillar3_d: "Внедрение состязательных меток для защиты авторских иллюстраций от несанкционированного парсинга.",
+                roadmap_title: "Дорожная карта экосистемы",
+                roadmap_subtitle: "Этапы разработки инфраструктуры защиты и инструментов верификации.",
+                status_completed: "ЗАВЕРШЕНО",
+                status_in_progress: "В ПРОЦЕССЕ",
+                status_upcoming: "ПРЕДСТОИТ",
+                status_planned: "ЗАПЛАНИРОВАНО",
+                p1_h: "Ядро коалиции и портал заявок",
+                p1_d: "Формирование волонтерского ядра RatAI, утверждение стандарта LP-01 и запуск портала инцидентов.",
+                p2_h: "Юридический щит и защита детей",
+                p2_d: "Интеграция автоматических претензий, информационные кампании и приоритетный триаж угроз против детей.",
+                p3_h: "Детектор синтетических меток",
+                p3_d: "Браузерное расширение и API для обнаружения скрытых следов ИИ-генерации и сгенерированного аудио.",
+                p4_h: "Индекс прозрачности ИИ-вендоров",
+                p4_d: "Публичный рейтинг разработчиков ИИ на предмет соблюдения стандартов согласия и безопасности.",
+                ticket_title: "Сообщить об инциденте ИИ",
+                ticket_sub: "Отправьте дипфейки, случаи парсинга или ИИ-мошенничества на проверку.",
+                lbl_name: "Контакт / Псевдоним",
+                lbl_email: "Email / Защищенная связь",
+                lbl_category: "Категория инцидента",
+                cat_minor: "Дипфейк / Угроза в отношении несовершеннолетних (Приоритет)",
+                cat_voice: "Несанкционированный клонированный голос / Фишинг",
+                cat_scraping: "Кража / Парсинг авторского контента",
+                cat_deception: "ИИ-мошенничество или бот с теневыми паттернами",
+                lbl_url: "Ссылка / Доказательства",
+                lbl_desc: "Подробное описание",
+                privacy_notice: "Все обращения шифруются и обрабатываются строго в соответствии с правилами конфиденциальности.",
+                btn_submit: "Отправить зашифрованный отчет",
+                info_title: "Экстренные инструкции",
+                info_text: "Если инцидент связан с шантажом или дипфейками против детей, выбирайте категорию «Угроза несовершеннолетним» для приоритетной передачи волонтерам-юристам.",
+                metrics_title: "Статистика портала",
+                m_processed: "Обработано отчетов:",
+                m_resolved: "Успешных блокировок:",
+                m_response: "Среднее время триажа:"
+            }
+        };
+
+        let currentLang = 'en'; // DEFAULT LANGUAGE SET TO ENGLISH
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Toggle Language Buttons UI
+            document.getElementById('lang-en').className = lang === 'en' 
+                ? "px-2.5 py-1 rounded-md bg-cyber-primary text-cyber-black font-bold transition-all"
+                : "px-2.5 py-1 rounded-md text-cyber-text hover:text-white transition-all";
+
+            document.getElementById('lang-ru').className = lang === 'ru' 
+                ? "px-2.5 py-1 rounded-md bg-cyber-primary text-cyber-black font-bold transition-all"
+                : "px-2.5 py-1 rounded-md text-cyber-text hover:text-white transition-all";
+
+            // Update DOM Elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) {
+                    el.textContent = i18n[lang][key];
+                }
+            });
+        }
+
+        // Tab Navigation Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn px-4 py-2 rounded-lg text-cyber-text hover:text-white transition-all";
+            });
+
+            const selectedTab = document.getElementById(`tab-${tabId}`);
+            const selectedNav = document.getElementById(`nav-${tabId}`);
+
+            if (selectedTab) selectedTab.classList.add('active');
+            if (selectedNav) {
+                selectedNav.className = "nav-btn px-4 py-2 rounded-lg text-cyber-primary bg-cyber-primary/10 border border-cyber-primary/30 transition-all";
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Handle Form Submission Mock
+        function handleTicketSubmit(event) {
+            event.preventDefault();
+            const alertBox = document.getElementById('alertBox');
+            const alertMessage = document.getElementById('alertMessage');
+            const refId = Math.floor(1000 + Math.random() * 9000);
+
+            alertMessage.textContent = currentLang === 'en'
+                ? `Incident report filed successfully! Reference ID: #RAT-${refId}`
+                : `Заявка об инциденте успешно зарегистрирована! ID: #RAT-${refId}`;
+
+            alertBox.classList.remove('hidden');
+            event.target.reset();
+
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Set default EN language on window load
+        window.onload = function() {
+            setLanguage('en');
+        };
+    </script>
+</body>
+</html>
